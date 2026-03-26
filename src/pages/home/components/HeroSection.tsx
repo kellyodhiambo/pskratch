@@ -42,7 +42,7 @@ export default function HeroSection() {
           {/* Name */}
           <h1 className="font-bebas leading-none text-white animate-fadeInUp delay-100"
             style={{ fontSize: 'clamp(4.5rem, 14vw, 11rem)' }}>
-            DJ
+            
           </h1>
           <h1 className="font-bebas leading-none text-shimmer animate-fadeInUp delay-200"
             style={{ fontSize: 'clamp(3.5rem, 11vw, 9rem)' }}>
