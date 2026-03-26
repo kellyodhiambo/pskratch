@@ -179,7 +179,7 @@ export default function AcademyPage() {
                       </div>
                       <div className="flex flex-col gap-2">
                         <label className="font-barlow text-xs font-600 tracking-widest uppercase" style={{ color: 'var(--gold)' }}>Phone Number</label>
-                        <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" style={inputStyle} />
+                        <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="+254712345678" style={inputStyle} />
                       </div>
                     </div>
                     <div className="flex flex-col gap-2">
