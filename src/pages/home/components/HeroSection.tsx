@@ -14,11 +14,10 @@ export default function HeroSection() {
           alt="DJ PSKRATCH performing live"
           className="w-full h-full object-cover object-center"
         />
-        {/* Cinematic overlay — frames the DJ, keeps text readable */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/35 to-black/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/55" />
-        {/* Subtle gold vignette glow from center */}
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 65% 50%, rgba(212,175,55,0.06) 0%, transparent 65%)' }} />
+        {/* Cinematic overlay — heavy dim for full text readability */}
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.75)' }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70" />
         <div className="absolute bottom-0 left-0 right-0 h-56" style={{ background: 'linear-gradient(to top, var(--bg), transparent)' }} />
       </div>
 
@@ -51,7 +50,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Tagline */}
-          <p className="font-barlow text-sm md:text-base tracking-widest uppercase mt-4 mb-8 animate-fadeInUp delay-300 text-white/60">
+          <p className="font-barlow text-sm md:text-base tracking-widest uppercase mt-4 mb-8 animate-fadeInUp delay-300 text-white/80">
             Scratch the Beat &mdash; Own the Night
           </p>
 
@@ -82,7 +81,7 @@ export default function HeroSection() {
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="font-bebas text-2xl md:text-3xl" style={{ color: 'var(--gold)' }}>{stat.value}</div>
-                <div className="text-xs tracking-widest uppercase text-white/40">{stat.label}</div>
+                <div className="text-xs tracking-widest uppercase text-white/60">{stat.label}</div>
               </div>
             ))}
           </div>
