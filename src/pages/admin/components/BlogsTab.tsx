@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useBlogs, type Blog } from '../../../store/adminStore';
+import ImageUpload from '../../../components/feature/ImageUpload';
 
-const empty: Omit<Blog, 'id'> = { title: '', date: '', excerpt: '', category: '' };
+const empty: Omit<Blog, 'id'> = { title: '', date: '', excerpt: '', category: '', image: '' };
 const CATEGORIES = ['Music', 'Events', 'Academy', 'News'];
 
 export default function BlogsTab() {
@@ -64,6 +65,10 @@ export default function BlogsTab() {
           <div className="w-full max-w-lg rounded-2xl p-8" style={{ backgroundColor: 'var(--bg-alt)', border: '1px solid var(--border)' }}>
             <h3 className="font-bebas text-2xl tracking-widest mb-6" style={{ color: 'var(--text)' }}>{editing ? 'Edit Post' : 'New Post'}</h3>
             <div className="flex flex-col gap-4">
+              <div>
+                <label className="block font-barlow text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--gold)' }}>Cover Image</label>
+                <ImageUpload value={form.image} onChange={(url) => setForm({ ...form, image: url })} folder="blogs" />
+              </div>
               {(['title', 'date'] as const).map((field) => (
                 <div key={field}>
                   <label className="block font-barlow text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--gold)' }}>{field}</label>

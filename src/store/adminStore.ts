@@ -30,6 +30,7 @@ export type Blog = {
   date: string;
   excerpt: string;
   category: string;
+  image: string;
 };
 
 // ── row mappers ──────────────────────────────────────────────
@@ -38,7 +39,7 @@ const toEvent = (r: any): Event => ({ id: r.id, title: r.title, date: r.date, lo
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toMix = (r: any): Mix => ({ id: r.id, title: r.title, description: r.description ?? '', duration: r.duration ?? '', genre: r.genre ?? '', thumbnail: r.thumbnail ?? '', youtubeId: r.youtube_id ?? '', plays: r.plays ?? '0', isFeatured: r.is_featured ?? false, audioDownload: r.audio_download ?? '#', videoDownload: r.video_download ?? '#' });
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const toBlog = (r: any): Blog => ({ id: r.id, title: r.title, date: r.date, excerpt: r.excerpt ?? '', category: r.category ?? '' });
+const toBlog = (r: any): Blog => ({ id: r.id, title: r.title, date: r.date, excerpt: r.excerpt ?? '', category: r.category ?? '', image: r.image ?? '' });
 
 // ── Events ───────────────────────────────────────────────────
 export function useEvents() {
@@ -67,8 +68,8 @@ export function useBlogs() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const fetch = async () => { const { data } = await supabase.from('blogs').select('*').order('id'); setBlogs((data ?? []).map(toBlog)); };
   useEffect(() => { fetch(); }, []);
-  const addBlog = async (b: Omit<Blog, 'id'>) => { await supabase.from('blogs').insert({ title: b.title, date: b.date, excerpt: b.excerpt, category: b.category }); fetch(); };
-  const updateBlog = async (b: Blog) => { await supabase.from('blogs').update({ title: b.title, date: b.date, excerpt: b.excerpt, category: b.category }).eq('id', b.id); fetch(); };
+  const addBlog = async (b: Omit<Blog, 'id'>) => { await supabase.from('blogs').insert({ title: b.title, date: b.date, excerpt: b.excerpt, category: b.category, image: b.image }); fetch(); };
+  const updateBlog = async (b: Blog) => { await supabase.from('blogs').update({ title: b.title, date: b.date, excerpt: b.excerpt, category: b.category, image: b.image }).eq('id', b.id); fetch(); };
   const deleteBlog = async (id: number) => { await supabase.from('blogs').delete().eq('id', id); fetch(); };
   return { blogs, addBlog, updateBlog, deleteBlog };
 }

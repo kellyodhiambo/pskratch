@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useEvents, type Event } from '../../../store/adminStore';
+import ImageUpload from '../../../components/feature/ImageUpload';
 
 const empty: Omit<Event, 'id'> = { title: '', date: '', location: '', image: '', ticketUrl: '#' };
 
@@ -61,7 +62,7 @@ export default function EventsTab() {
           <div className="w-full max-w-lg rounded-2xl p-8" style={{ backgroundColor: 'var(--bg-alt)', border: '1px solid var(--border)' }}>
             <h3 className="font-bebas text-2xl tracking-widest mb-6" style={{ color: 'var(--text)' }}>{editing ? 'Edit Event' : 'New Event'}</h3>
             <div className="flex flex-col gap-4">
-              {(['title', 'date', 'location', 'image', 'ticketUrl'] as const).map((field) => (
+              {(['title', 'location', 'ticketUrl'] as const).map((field) => (
                 <div key={field}>
                   <label className="block font-barlow text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--gold)' }}>{field}</label>
                   <input
@@ -72,6 +73,20 @@ export default function EventsTab() {
                   />
                 </div>
               ))}
+              <div>
+                <label className="block font-barlow text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--gold)' }}>Date</label>
+                <input
+                  type="date"
+                  value={form.date}
+                  onChange={(e) => setForm({ ...form, date: e.target.value })}
+                  className="w-full px-4 py-2.5 rounded-lg text-sm font-barlow outline-none"
+                  style={{ backgroundColor: 'var(--bg)', border: '1px solid var(--border)', color: 'var(--text)', colorScheme: 'dark' }}
+                />
+              </div>
+              <div>
+                <label className="block font-barlow text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--gold)' }}>Event Image</label>
+                <ImageUpload value={form.image} onChange={(url) => setForm({ ...form, image: url })} folder="events" />
+              </div>
             </div>
             <div className="flex gap-3 mt-6">
               <button onClick={save} className="flex-1 py-2.5 font-barlow font-600 text-sm tracking-widest uppercase rounded-full cursor-pointer" style={{ backgroundColor: 'var(--gold)', color: '#000' }}>Save</button>

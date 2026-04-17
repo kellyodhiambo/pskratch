@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useMixes, type Mix } from '../../../store/adminStore';
+import ImageUpload from '../../../components/feature/ImageUpload';
 
 const empty: Omit<Mix, 'id'> = { title: '', description: '', duration: '', genre: '', thumbnail: '', youtubeId: '', plays: '0', isFeatured: false, audioDownload: '#', videoDownload: '#' };
 
@@ -19,7 +20,7 @@ export default function MixesTab() {
     close();
   };
 
-  const textFields = ['title', 'genre', 'duration', 'youtubeId', 'thumbnail', 'plays'] as const;
+  const textFields = ['title', 'genre', 'duration', 'youtubeId', 'plays'] as const;
 
   return (
     <div>
@@ -80,6 +81,10 @@ export default function MixesTab() {
                   />
                 </div>
               ))}
+              <div>
+                <label className="block font-barlow text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--gold)' }}>Thumbnail</label>
+                <ImageUpload value={form.thumbnail} onChange={(url) => setForm({ ...form, thumbnail: url })} folder="mixes" />
+              </div>
               <div>
                 <label className="block font-barlow text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--gold)' }}>Description</label>
                 <textarea
