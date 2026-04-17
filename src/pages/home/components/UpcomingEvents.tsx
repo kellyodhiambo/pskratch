@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { upcomingEvents } from '../../../mocks/events';
+import { useEvents } from '../../../store/adminStore';
 
 export default function UpcomingEvents() {
+  const { events } = useEvents();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: 'left' | 'right') => {
@@ -33,7 +34,7 @@ export default function UpcomingEvents() {
         </div>
 
         <div ref={scrollRef} className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          {upcomingEvents.map((event, idx) => (
+          {events.map((event, idx) => (
             <div
               key={event.id}
               className="min-w-[280px] sm:min-w-[320px] snap-start rounded-2xl overflow-hidden group flex-shrink-0 transition-all duration-300 hover:-translate-y-2"

@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 flex items-center justify-center">
-                <img src="https://public.readdy.ai/ai/img_res/f50695bf-3965-471b-86b7-d6cb2c8930ce.png" alt="DJ PSKRATCH" className="w-full h-full object-contain" />
+                <img src="/plogo.png" alt="DJ PSKRATCH" className="w-full h-full object-contain" />
               </div>
               <span className="font-bebas text-2xl tracking-widest" style={{ color: 'var(--text)' }}>
                 DJ <span style={{ color: 'var(--gold)' }}>PSKRATCH</span>

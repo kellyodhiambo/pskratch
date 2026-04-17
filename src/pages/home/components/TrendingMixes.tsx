@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { trendingMixes } from '../../../mocks/mixes';
+import { useMixes } from '../../../store/adminStore';
 
 export default function TrendingMixes() {
+  const { mixes } = useMixes();
   const [activeId, setActiveId] = useState<number | null>(null);
-  const featured = trendingMixes.find((m) => m.isFeatured)!;
-  const secondary = trendingMixes.filter((m) => !m.isFeatured);
+  const featured = mixes.find((m) => m.isFeatured) ?? mixes[0];
+  const secondary = mixes.filter((m) => !m.isFeatured);
+
+  if (!featured) return null;
 
   return (
     <section id="mixes" className="py-20 md:py-28" style={{ backgroundColor: 'var(--bg)' }}>

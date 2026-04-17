@@ -2,15 +2,18 @@ import { useState } from 'react';
 import Navbar from '../../components/feature/Navbar';
 import Footer from '../../components/feature/Footer';
 import MixCard from './components/MixCard';
-import { trendingMixes } from '../../mocks/mixes';
+import { useMixes } from '../../store/adminStore';
 
 const genres = ['All', 'Hip-Hop / Trap', 'Old School Hip-Hop', 'Afrobeats / R&B', 'Bass / Drum & Bass', 'Neo-Soul / Jazz R&B', 'Trap / Hip-Hop'];
 
 export default function MixesPage() {
+  const { mixes } = useMixes();
   const [activeGenre, setActiveGenre] = useState('All');
 
-  const featured = trendingMixes.find((m) => m.isFeatured)!;
-  const rest = trendingMixes.filter((m) => !m.isFeatured);
+  const featured = mixes.find((m) => m.isFeatured) ?? mixes[0];
+  const rest = mixes.filter((m) => !m.isFeatured);
+
+  if (!featured) return null;
 
   const filtered = activeGenre === 'All'
     ? rest

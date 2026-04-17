@@ -4,6 +4,7 @@ import Home from "../pages/home/page";
 import BookingPage from "../pages/booking/page";
 import AcademyPage from "../pages/academy/page";
 import MixesPage from "../pages/mixes/page";
+import AdminPage from "../pages/admin/AdminPage";
 
 const routes: RouteObject[] = [
   {
@@ -21,6 +22,10 @@ const routes: RouteObject[] = [
   {
     path: "/mixes",
     element: <MixesPage />,
+  },
+  {
+    path: "/admin",
+    element: <AdminPage />,
   },
   {
     path: "*",

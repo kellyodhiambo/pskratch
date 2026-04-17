@@ -1,4 +1,4 @@
-import { latestUpdates } from '../../../mocks/updates';
+import { useBlogs } from '../../../store/adminStore';
 
 const categoryTokens: Record<string, { light: string; dark: string; border: string }> = {
   Music:   { light: '#B8922C', dark: '#D4AF37', border: 'rgba(184,146,44,0.3)' },
@@ -7,6 +7,7 @@ const categoryTokens: Record<string, { light: string; dark: string; border: stri
 };
 
 export default function LatestUpdates() {
+  const { blogs } = useBlogs();
   return (
     <section className="py-20 md:py-28 section-bg">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -27,7 +28,7 @@ export default function LatestUpdates() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {latestUpdates.map((update, idx) => {
+          {blogs.map((update, idx) => {
             const cat = categoryTokens[update.category];
             return (
               <article

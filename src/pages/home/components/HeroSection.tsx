@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
-import { upcomingEvents } from '../../../mocks/events';
+import { useEvents } from '../../../store/adminStore';
 
 export default function HeroSection() {
-  const nextEvent = upcomingEvents[0];
+  const { events } = useEvents();
+  const nextEvent = events[0];
 
   return (
     <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="https://public.readdy.ai/ai/img_res/edited_3cce316dcbe4da17d1804ff3349983f0_d45967bb.jpg"
+          src="https://i.postimg.cc/j5k4DwqL/Whats-App-Image-2026-04-17-at-5-29-51-PM.jpg"
           alt="DJ PSKRATCH performing live"
           className="w-full h-full object-cover object-center"
         />
@@ -89,6 +90,7 @@ export default function HeroSection() {
       </div>
 
       {/* Next Event Bar */}
+      {nextEvent && (
       <div className="relative z-10 w-full" style={{ borderTop: '1px solid var(--border-gold)', backgroundColor: 'var(--overlay)', backdropFilter: 'blur(16px)' }}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3 flex-shrink-0">
@@ -132,6 +134,7 @@ export default function HeroSection() {
           </Link>
         </div>
       </div>
+      )}
     </section>
   );
 }

@@ -41,7 +41,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 cursor-pointer">
             <div className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center">
-              <img src="https://public.readdy.ai/ai/img_res/f50695bf-3965-471b-86b7-d6cb2c8930ce.png" alt="DJ PSKRATCH" className="w-full h-full object-contain" />
+              <img src="/plogo.png" alt="DJ PSKRATCH" className="w-full h-full object-contain" />
             </div>
             <span className="hidden sm:block font-bebas text-xl md:text-2xl tracking-widest" style={{ color: 'var(--text)' }}>
               DJ <span style={{ color: 'var(--gold)' }}>PSKRATCH</span>
