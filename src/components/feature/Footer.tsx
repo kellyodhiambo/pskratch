@@ -8,10 +8,10 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: 'ri-instagram-line', href: 'https://instagram.com/djpskratch', label: 'Instagram' },
-  { icon: 'ri-youtube-line', href: 'https://youtube.com', label: 'YouTube' },
-  { icon: 'ri-soundcloud-line', href: 'https://soundcloud.com', label: 'SoundCloud' },
-  { icon: 'ri-twitter-x-line', href: 'https://twitter.com', label: 'Twitter/X' },
+  { icon: 'ri-instagram-line', href: 'https://www.instagram.com/pskratch_kenya/', label: 'Instagram' },
+  { icon: 'ri-youtube-line', href: 'https://www.youtube.com/@PskratchKenya', label: 'YouTube' },
+  { icon: 'ri-facebook-line', href: 'https://web.facebook.com/PskratchKe/', label: 'Facebook' },
+  { icon: 'ri-music-2-line', href: 'https://www.mixcloud.com/pskratch-pascal', label: 'Mixcloud' },
 ];
 
 export default function Footer() {
@@ -71,7 +71,7 @@ export default function Footer() {
                 <div className="w-4 h-4 flex items-center justify-center">
                   <i className="ri-instagram-line" style={{ color: 'var(--gold)' }} />
                 </div>
-                <a href="https://instagram.com/djpskratch" target="_blank" rel="noopener noreferrer nofollow" className="cursor-pointer transition-colors duration-200 hover:underline" style={{ color: 'inherit' }}>@djpskratch</a>
+                <a href="https://www.instagram.com/pskratch_kenya/" target="_blank" rel="noopener noreferrer nofollow" className="cursor-pointer transition-colors duration-200 hover:underline" style={{ color: 'inherit' }}>@pskratch_kenya</a>
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-4 h-4 flex items-center justify-center">
@@ -80,9 +80,9 @@ export default function Footer() {
                 <span>bookings@djpskratch.com</span>
               </li>
               <li className="mt-2">
-                <Link to="/booking" className="text-sm font-barlow font-600 tracking-wide cursor-pointer whitespace-nowrap transition-colors duration-200" style={{ color: 'var(--gold)' }}>
-                  Book For Your Event &rarr;
-                </Link>
+                <a href="https://www.instagram.com/pskratch_kenya/" target="_blank" rel="noopener noreferrer nofollow" className="text-sm font-barlow font-600 tracking-wide cursor-pointer whitespace-nowrap transition-colors duration-200" style={{ color: 'var(--gold)' }}>
+                  Book via Instagram &rarr;
+                </a>
               </li>
             </ul>
           </div>

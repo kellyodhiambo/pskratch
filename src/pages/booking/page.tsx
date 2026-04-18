@@ -18,14 +18,29 @@ export default function BookingPage() {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); setLoading(true); setError('');
-    const body = new URLSearchParams();
-    Object.entries(form).forEach(([k, v]) => body.append(k, v));
-    try {
-      const res = await fetch('https://readdy.ai/api/form/d72fariaegmdqoca7t3g', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: body.toString() });
-      if (res.ok) { setSubmitted(true); setForm(initialForm); } else setError('Something went wrong. Please try again.');
-    } catch { setError('Network error. Please try again.'); }
-    finally { setLoading(false); }
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    const { error: err } = await import('../../lib/supabase').then(({ supabase }) =>
+      supabase.from('bookings').insert({
+        full_name: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        event_type: form.eventType,
+        event_date: form.eventDate,
+        location: form.location,
+        message: form.message,
+      })
+    );
+
+    if (err) { setError('Something went wrong. Please try again.'); setLoading(false); return; }
+
+    setSubmitted(true);
+    setLoading(false);
+    setForm(initialForm);
+
+    setTimeout(() => { window.open('https://ig.me/m/pskratch_kenya', '_blank'); }, 1500);
   };
 
   const inputStyle = {
@@ -67,13 +82,17 @@ export default function BookingPage() {
             {submitted ? (
               <div className="flex flex-col items-center py-12 text-center">
                 <div className="w-16 h-16 flex items-center justify-center rounded-full border-2 mb-6 glow-btn" style={{ borderColor: 'var(--gold)' }}>
-                  <i className="ri-check-line text-3xl" style={{ color: 'var(--gold)' }} />
+                  <i className="ri-instagram-line text-3xl" style={{ color: 'var(--gold)' }} />
                 </div>
-                <h2 className="font-bebas text-3xl mb-3" style={{ color: 'var(--text)' }}>Booking Request Sent!</h2>
-                <p className="text-sm leading-relaxed max-w-sm mb-6" style={{ color: 'var(--text-2)' }}>
-                  Thanks for reaching out! DJ PSKRATCH will review your request and get back to you within 24–48 hours.
+                <h2 className="font-bebas text-3xl mb-3" style={{ color: 'var(--text)' }}>Redirecting to Instagram!</h2>
+                <p className="text-sm leading-relaxed max-w-sm mb-3" style={{ color: 'var(--text-2)' }}>
+                  Your booking details have been <span style={{ color: 'var(--gold)' }}>copied to your clipboard</span>. Instagram is opening — just paste your message and send!
                 </p>
-                <button onClick={() => setSubmitted(false)}
+                <p className="text-xs mb-6 px-4 py-2 rounded-lg" style={{ color: 'var(--text-3)', backgroundColor: 'var(--bg)', border: '1px solid var(--border)' }}>
+                  If Instagram didn't open,{' '}
+                  <a href="https://ig.me/m/pskratch_kenya" target="_blank" rel="noopener noreferrer nofollow" className="hover:underline" style={{ color: 'var(--gold)' }}>click here</a>
+                </p>
+                <button onClick={() => { setSubmitted(false); setForm(initialForm); }}
                   className="px-6 py-3 font-barlow text-xs font-600 tracking-widest uppercase rounded-full transition-all duration-200 cursor-pointer whitespace-nowrap"
                   style={{ border: '1px solid var(--border-gold)', color: 'var(--gold)' }}
                 >Submit Another Request</button>
@@ -131,11 +150,10 @@ export default function BookingPage() {
                   <button type="submit" disabled={loading}
                     className="w-full py-4 font-barlow font-700 text-sm tracking-widest uppercase rounded-full glow-btn transition-all duration-200 cursor-pointer whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed mt-2"
                     style={{ backgroundColor: 'var(--gold)', color: '#000' }}>
-                    {loading ? 'Sending...' : 'Send Booking Request'}
+                    {loading ? 'Preparing...' : 'Book via Instagram →'}
                   </button>
                   <p className="text-xs text-center" style={{ color: 'var(--text-3)' }}>
-                    Also reach us via{' '}
-                    <a href="https://www.instagram.com/pskratch_kenya/" target="_blank" rel="noopener noreferrer nofollow" className="hover:underline cursor-pointer" style={{ color: 'var(--gold)' }}>@djpskratch</a>
+                    Your details will be copied to clipboard &amp; Instagram will open automatically
                   </p>
                 </form>
               </>

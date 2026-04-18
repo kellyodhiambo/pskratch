@@ -11,7 +11,8 @@ const navLinks = [
 const socialLinks = [
   { icon: 'ri-instagram-line', href: 'https://www.instagram.com/pskratch_kenya/', label: 'Instagram' },
   { icon: 'ri-youtube-line', href: 'https://www.youtube.com/@PskratchKenya', label: 'YouTube' },
-  { icon: 'ri-soundcloud-line', href: 'https://soundcloud.com', label: 'SoundCloud' },
+  { icon: 'ri-facebook-line', href: 'https://web.facebook.com/PskratchKe/', label: 'Facebook' },
+  { icon: 'ri-music-2-line', href: 'https://www.mixcloud.com/pskratch-pascal', label: 'Mixcloud' },
 ];
 
 export default function Navbar() {
@@ -81,15 +82,15 @@ export default function Navbar() {
                 <i className={`${s.icon} text-lg`} />
               </a>
             ))}
-            <Link
-              to="/booking"
+            <a
+              href="https://www.instagram.com/pskratch_kenya/"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
               className="ml-1 px-5 py-2 font-barlow font-700 text-sm tracking-widest uppercase rounded-full glow-btn transition-all duration-200 cursor-pointer whitespace-nowrap"
               style={{ backgroundColor: 'var(--gold)', color: '#000' }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--gold-light)'}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--gold)'}
             >
               Book Now
-            </Link>
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -141,13 +142,15 @@ export default function Navbar() {
                 </a>
               ))}
             </div>
-            <Link
-              to="/booking"
+            <a
+              href="https://www.instagram.com/pskratch_kenya/"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
               className="mt-8 py-4 font-barlow font-700 text-base tracking-widest uppercase rounded-full text-center glow-btn cursor-pointer whitespace-nowrap"
               style={{ backgroundColor: 'var(--gold)', color: '#000' }}
             >
               Book Now
-            </Link>
+            </a>
           </div>
         </div>
       </div>

@@ -5,8 +5,9 @@ import EventsTab from './components/EventsTab';
 import MixesTab from './components/MixesTab';
 import BlogsTab from './components/BlogsTab';
 import SettingsTab from './components/SettingsTab';
+import BookingsTab from './components/BookingsTab';
 
-const TABS = ['Events', 'Mixes', 'Blogs', 'Settings'] as const;
+const TABS = ['Bookings', 'Events', 'Mixes', 'Blogs', 'Settings'] as const;
 type Tab = typeof TABS[number];
 
 export default function AdminPage() {
@@ -130,6 +131,7 @@ export default function AdminPage() {
           ))}
         </div>
 
+        {tab === 'Bookings' && <BookingsTab />}
         {tab === 'Events' && <EventsTab />}
         {tab === 'Mixes' && <MixesTab />}
         {tab === 'Blogs' && <BlogsTab />}
