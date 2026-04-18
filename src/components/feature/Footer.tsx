@@ -77,7 +77,7 @@ export default function Footer() {
                 <div className="w-4 h-4 flex items-center justify-center">
                   <i className="ri-mail-line" style={{ color: 'var(--gold)' }} />
                 </div>
-                <span>bookings@djpskratch.com</span>
+                <span>pskratch1@gmail.com</span>
               </li>
               <li className="mt-2">
                 <a href="https://www.instagram.com/pskratch_kenya/" target="_blank" rel="noopener noreferrer nofollow" className="text-sm font-barlow font-600 tracking-wide cursor-pointer whitespace-nowrap transition-colors duration-200" style={{ color: 'var(--gold)' }}>

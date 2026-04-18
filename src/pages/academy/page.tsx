@@ -28,13 +28,18 @@ export default function AcademyPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); setLoading(true); setError('');
-    const body = new URLSearchParams();
-    Object.entries(form).forEach(([k, v]) => body.append(k, v));
-    try {
-      const res = await fetch('https://readdy.ai/api/form/d72fariaegmdqoca7t40', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: body.toString() });
-      if (res.ok) { setSubmitted(true); setForm(initialForm); } else setError('Something went wrong. Please try again.');
-    } catch { setError('Network error. Please try again.'); }
-    finally { setLoading(false); }
+    const { error: err } = await import('../../lib/supabase').then(({ supabase }) =>
+      supabase.from('enrollments').insert({
+        full_name: form.fullName,
+        age: form.age,
+        email: form.email,
+        phone: form.phone,
+        experience_level: form.experienceLevel,
+        message: form.message,
+      })
+    );
+    if (err) { setError('Something went wrong. Please try again.'); setLoading(false); return; }
+    setSubmitted(true); setForm(initialForm); setLoading(false);
   };
 
   const inputStyle = {
