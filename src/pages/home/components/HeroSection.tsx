@@ -56,15 +56,13 @@ export default function HeroSection() {
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 mb-12 animate-fadeInUp delay-400">
-            <a
-              href="https://www.instagram.com/pskratch_kenya/"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
+            <Link
+              to="/booking"
               className="px-7 py-3 font-barlow font-700 text-sm tracking-widest uppercase rounded-full glow-btn transition-all duration-200 cursor-pointer whitespace-nowrap"
               style={{ backgroundColor: 'var(--gold)', color: '#000' }}
             >
               Book DJ PSKRATCH
-            </a>
+            </Link>
             <Link
               to="/mixes"
               className="px-7 py-3 font-barlow font-600 text-sm tracking-widest uppercase rounded-full transition-all duration-200 cursor-pointer whitespace-nowrap text-white/75 hover:text-white"
